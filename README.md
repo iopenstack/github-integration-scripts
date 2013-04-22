@@ -14,6 +14,7 @@
 
 ## createTag.js
 * Will create a tag of the latest commit in master
+* Tag name will be the date ( for now )
 
 ### How to use:
 `node createTag.js`
