@@ -2,16 +2,7 @@ var Q = require('Q');
 var config = require('./configuration.js').config;
 
 var rest = require('restler');
-
 var date = new Date().toISOString();
-
-var resolveData = function(data){
-	defer.resolve(data);
-}
-
-var handleError = function(error){
-	defer.reject(error);
-}
 
 return Q.fcall(function () {
 	console.log("Retrieving Commits");
