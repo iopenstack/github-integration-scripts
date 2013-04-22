@@ -11,3 +11,9 @@
 
 ### How to use:
 `node createBranch.js name_of_branch_to_be_created`
+
+## createTag.js
+* Will create a tag of the latest commit in master
+
+### How to use:
+`node createTag.js`
