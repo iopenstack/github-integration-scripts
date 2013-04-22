@@ -1,13 +1,15 @@
 var Q = require('Q');
-var defer = Q.defer();
+var config = require('./configuration.js').config;
+
 var rest = require('restler');
+var defer = Q.defer();
 
-var owner = "ENTER YOUR GITHUB USERNAME HERE";
-var repoName = "ENTER YOUR REPO NAME HERE";
+var owner = config.owner;
+var repoName = config.repoName;
+var headers = config.theHeaders;
+
+
 var branchName = process.argv[2];  //THE BRANCH NAME MUST BE INCLUDED AS AN ARGUMENT
-
-var headers = { Authorization:'token ENTER YOUR GITHUB TOKEN HERE',
-				Accept:'application/json'};
 
 var resolveData = function(data){
 	defer.resolve(data);
@@ -16,7 +18,7 @@ var resolveData = function(data){
 }
 
 var handleError = function(error){
-	console.log("An Error occurred")
+	console.log("An Error occurred: '" + error.message = "'");
 	defer.resolve(error);
 	defer.promise;
 	return error;
