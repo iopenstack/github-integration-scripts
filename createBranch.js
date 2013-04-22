@@ -4,11 +4,6 @@ var config = require('./configuration.js').config;
 var rest = require('restler');
 var defer = Q.defer();
 
-var owner = config.owner;
-var repoName = config.repoName;
-var headers = config.theHeaders;
-
-
 var branchName = process.argv[2];  //THE BRANCH NAME MUST BE INCLUDED AS AN ARGUMENT
 
 var resolveData = function(data){
@@ -26,8 +21,8 @@ var handleError = function(error){
 
 return Q.fcall(function () {
 	console.log("Retrieving Commits")
-	rest.get('https://api.github.com/repos/' + owner + '/' + repoName + '/commits', 
-			{ headers: headers}
+	rest.get('https://api.github.com/repos/' + config.owner + '/' + config.repoName + '/commits', 
+			{ headers: config.theHeaders }
 		).on('success', resolveData).on('fail', handleError);
 }).then( function() {
 	return defer.promise;
@@ -38,8 +33,8 @@ return Q.fcall(function () {
 	var ref = "refs/heads/" + branchName;
     var data = JSON.stringify({ref: ref, sha: lastCommit.sha });
 
-    rest.post('https://api.github.com/repos/' + owner + '/' + repoName + '/git/refs', {
-    	headers: headers, 
+    rest.post('https://api.github.com/repos/' + config.owner + '/' + config.repoName + '/git/refs', {
+    	headers: config.theHeaders, 
     	data: data
     }).on('success', resolveData).on('fail', handleError);
 }).then( function(){
