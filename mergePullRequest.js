@@ -1,4 +1,4 @@
-var Q = require('Q'), rest = require('restler'), _ = require('lodash');
+var Q = require('Q'), rest = require('restler');
 var config = require('./configuration.js').config;
 
 var branchName = process.argv[2];  //THE BRANCH NAME MUST BE INCLUDED AS AN ARGUMENT
@@ -40,11 +40,10 @@ return Q.fcall(function () {
 				data: JSON.stringify({ 'commit_message': 'Automatically Merged' })
 			}).on('success', function (data) {
 				console.log("Branch name: '" + branchName + "' merged." );
-			}).on('fail', function (error){
-				console.log(error.message);
-				throw "Unable to merge branch: '" + branchName + "' due to error: " + error.message;
+			}).on('fail', function (error){				
+				console.log("Unable to merge branch: '" + branchName + "' due to error: " + error.message);
 			});
 	} else {
-		throw "!!! Branch '" + branchName + "' is not mergeable !!!";
+		console.log("!!! Branch '" + branchName + "' is not mergeable !!!");
 	}
-})
+});
