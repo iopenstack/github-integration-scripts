@@ -1,6 +1,4 @@
-# Github Scripts 
-
-## Requirements
+# Requirements
 * NodeJS installed
 * Github Account
 * Github API Token
@@ -18,3 +16,9 @@
 
 ### How to use:
 `node createTag.js`
+
+## mergePullRequest.js
+* Will merge a pull request based off a branch name
+
+### How to use: 
+`node mergePullRequest.js name_of_branch_to_be_merged`
