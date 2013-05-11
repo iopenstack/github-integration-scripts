@@ -28,7 +28,7 @@ return Q.fcall(function () {
     	data: data
     }).on('success', function (data){
     	console.log("Branch '" + branchName + "' Created");
-    }).on('fail', function (error){	
-    	console.log("Error creating branch");
+    }).on('fail', function (error){
+ 		throw "Error creating branch: " + branchName;
     });
 });
