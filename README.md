@@ -15,6 +15,7 @@
 * Tag name will be the date if not specified
 
 ### How to use:
+<<<<<<< HEAD
 `node createTag.js (optional_tag_name)`
 
 ## mergePullRequest.js
