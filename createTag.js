@@ -3,6 +3,7 @@ var config = require('./configuration.js').config;
 
 var rest = require('restler');
 var date = new Date().toISOString();
+var tagName = ( process.argv[2] ) ? process.argv[2] : date.replace(/:/g,"_");
 
 return Q.fcall(function () {
 	console.log("Retrieving Commits");
@@ -19,7 +20,7 @@ return Q.fcall(function () {
 
 	var defer = Q.defer();
 	var lastCommit = commits[0];
-	var body = { tag: date, message: 'Automatically Created Tag',object: lastCommit.sha,
+	var body = { tag: tagName, message: 'Automatically Created Tag',object: lastCommit.sha,
 			type: 'commit', tagger: { name: config.owner, date: date }
 		};
 
@@ -35,9 +36,7 @@ return Q.fcall(function () {
 	console.log("Creating Tag on Github");
 	
 	var defer = Q.defer();
-	var data = JSON.stringify({ ref: 'refs/tags/' + date, sha: tagObject.sha});
-
-	console.log(tagObject)
+	var data = JSON.stringify({ ref: 'refs/tags/' + tagName, sha: tagObject.sha});
 
 	rest.post('https://api.github.com/repos/' + config.owner + '/' + config.repoName + '/git/refs', {
 			headers: config.theHeaders, data: data
@@ -45,14 +44,5 @@ return Q.fcall(function () {
 		.on('success', function(data) { defer.resolve(data) })
 		.on('fail', function(error) { defer.reject(error) });
 }).then( function(){
-
-	console.log("Created tag: '" + date + "' on repo '" + config.repoName + "'")
+	console.log("Created tag: '" + tagName + "' on repo '" + config.repoName + "'")
 });
-
-
-
-
-
-
-
-
