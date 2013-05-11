@@ -15,7 +15,7 @@
 * Tag name will be the date ( for now )
 
 ### How to use:
-`node createTag.js`
+`node createTag.js` 
 
 ## mergePullRequest.js
 * Will merge a pull request based off a branch name
