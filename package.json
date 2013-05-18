@@ -1,0 +1,13 @@
+{
+  "name": "github-integration-scripts",
+  "description": "Collection of command line scripts for integration with github.",
+  "author": "Chris Cantu <christopher.cantu@gmail.com>",
+  "dependencies": {
+    "restler": "2.x.x",
+    "q": "0.9.x",
+    "lodash": "1.x.x"
+  },
+  "devDependencies": {
+  },
+  "engine": "node >= 0.4.1"
+}
