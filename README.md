@@ -8,6 +8,7 @@
 * Create a github account: https://github.com/signup/free
 * Create a API Token: https://help.github.com/articles/creating-an-oauth-token-for-command-line-use
 * Add github username, repo name and api token to `configuration.js` file
+* Install Dependencies by running `npm install` from project folder
 
 ## createBranch.js 
 * Will create a branch based off of the latest commit on master
