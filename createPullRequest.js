@@ -9,7 +9,7 @@ return Q.fcall( function () {
     var defer = Q.defer(), data = {
         "title": "Amazing new feature",
         "body": "Please pull this in!",
-        "head": branchName,
+        "head": "christophercantu:" + branchName,
         "base": "master"
     }, json = JSON.stringify(data);
 
