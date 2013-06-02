@@ -3,14 +3,16 @@ var config = require('./configuration.js').config;
 
 var branchName = process.argv[2];  //THE BRANCH NAME MUST BE INCLUDED AS AN ARGUMENT
 
-return Q.fcall(function () {
-	console.log("Retrieving Pull Requests");
+return Q.fcall( function () {
+	console.info("Retrieving Pull Requests");
 
 	var defer = Q.defer();
 	rest.get('https://api.github.com/repos/' + config.owner + '/' + config.repoName + '/pulls',
 			{ headers: config.theHeaders})
 		.on('success', function(data) { defer.resolve(data) })
-		.on('fail', function(error) { defer.reject(error) });
+		.on('fail', function(error) {
+            defer.reject(error) }
+           );
 
 	return defer.promise;
 }).then( function (pulls){
@@ -36,7 +38,10 @@ return Q.fcall(function () {
 
 	return defer.promise;
 }).then( function (request){
-	if (!request.mergeable) {
-		throw "!!! Branch '" + branchName + "' is not mergeable !!!"
+    
+	if (request.mergeable) {
+        console.log("Success:  Branch '" + branchName + "' is mergeable!")
+	} else {
+	    throw "!!! Branch '" + branchName + "' is NOT mergeable !!!"
 	}
 }).done();
