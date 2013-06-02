@@ -10,26 +10,33 @@
 * Add github username, repo name and api token to `configuration.js` file
 * Install Dependencies by running `npm install` from project folder
 
-## createBranch.js 
+### createBranch.js
 * Will create a branch based off of the latest commit on master
 
 #### How to use:
 `node createBranch.js name_of_branch_to_be_created`
 
-## createTag.js
+### createTag.js
 * Will create a tag of the latest commit in master
 * Tag name will be the date if not specified
 
 #### How to use:
 `node createTag.js (optional_tag_name)`
 
-## mergePullRequest.js
+### createPullRequest.js
+* Will create a pull request based on a valid branch name
+
+#### How to use:
+
+`node createPullRequest.js branch_name
+
+### mergePullRequest.js
 * Will merge a pull request based off a branch name
 
-#### How to use: 
+#### How to use:
 `node mergePullRequest.js name_of_branch_to_be_merged`
 
-## validatePullRequestIsMergeable.js
+### validatePullRequestIsMergeable.js
 * Will validate there is a pull request and it is mergeable based on a branch name.
 
 #### How to use:
