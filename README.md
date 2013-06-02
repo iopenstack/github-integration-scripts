@@ -28,3 +28,8 @@
 
 #### How to use: 
 `node mergePullRequest.js name_of_branch_to_be_merged`
+
+## validateBranchIsMergeable.js
+* Will validate there is a pull request and it is mergeable based on a branch name.
+
+`node validateBranchIsMergeable.js name_of_banch`
