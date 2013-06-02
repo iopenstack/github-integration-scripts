@@ -32,4 +32,5 @@
 ## validateBranchIsMergeable.js
 * Will validate there is a pull request and it is mergeable based on a branch name.
 
+#### How to use:
 `node validateBranchIsMergeable.js name_of_banch`
