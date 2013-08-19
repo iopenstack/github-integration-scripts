@@ -5,6 +5,7 @@ var config = require('./configuration.js').config;
 //THE BRANCH NAMES MUST BE INCLUDED AS AN ARGUMENT
 var uiBranchName = process.argv[2],
   apiBranchName = process.argv[3];
+
 var uiPulls, apiPulls, requests;
 
 var fetchPullRequest = function(repoName) {
@@ -16,6 +17,7 @@ var fetchPullRequest = function(repoName) {
     defer.resolve(data);
   })
   .on('fail', function(error) {
+    console.log("Error retrieving repo " + repoName + ": " + error.message);
     defer.reject(error.message);
   });
 
@@ -66,7 +68,9 @@ var isMasterBranch = function(branchName) {
   return branchName === "master";
 };
 
+
 return Q.fcall(function() {
+  console.log('Reviewing UI Branch');
   return isMasterBranch(uiBranchName) ? [] : fetchPullRequest(config.uiRepo);
 }).then(function(pullRequests) {
   uiPulls = pullRequests;
