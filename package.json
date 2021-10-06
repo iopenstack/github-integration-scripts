@@ -3,11 +3,9 @@
   "description": "Collection of command line scripts for integration with github.",
   "author": "Chris Cantu <christopher.cantu@gmail.com>",
   "dependencies": {
-    "restler": "2.x.x",
+    "lodash": "^4.17.21",
     "q": "0.9.x",
-    "lodash": "1.x.x"
-  },
-  "devDependencies": {
+    "restler": "2.x.x"
   },
   "engine": "node >= 0.10.5"
 }
